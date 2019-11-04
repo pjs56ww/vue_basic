@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- 도움되는 콘솔 경고를 포함한 개발 버전 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Vue Start</title>
+</head>
+<body>
+  
+
+  <div id="app">
+    {{ message }} - {{ count }}
+    <!-- count application -->
+    <button v-on:click="plus">plus</button>
+    <button v-on:click="minus">minus</button>
+  </div>
+
+  <script>
+    // Vue 코드가 작성되는 곳
+    const app = new Vue({
+      // data 가 binding 되어서 즉각즉각 상호작용을 하게 됨
+      el: '#app', // 필수적인 옵션
+      // el: '.app', CSS Selector
+      data: {
+        message: 'Hello, Vue!',
+        count: 0,
+      },
+      methods: {
+        plus: function() { // 반드시 function 키워드를 사용해야 한다. vue 에서 arrow function 사용 금지
+          // 이유는 function 키워드를 사용해야 this 가 vue instance 를 가르킬 수 있게 된다.
+          this.count++
+        },
+        minus: function() {
+          this.count--
+        }
+      }
+      /*
+        this.message 함수가 정의될 때 이와 같은 방식으로 접근할 수 있다.
+      */
+    })
+  </script>
+</body>
+</html>
